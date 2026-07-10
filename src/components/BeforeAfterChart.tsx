@@ -36,13 +36,16 @@ export default function BeforeAfterChart({
     const increased = afterValue >= beforeValue;
 
     // Coordinate interne (viewBox), poi scalate in modo responsive.
+    // L'altezza delle barre (plotH) resta costante: con il titolo si aggiunge
+    // solo spazio in alto, così titolo e valori non si sovrappongono.
     const W = 360;
-    const H = 300;
     const hasTitle = !!title && title.trim() !== '';
-    const chartTop = hasTitle ? 52 : 28;
-    const plotBottom = 232;
-    const catLabelY = 250;
-    const plotH = plotBottom - chartTop;
+    const plotH = 180;
+    const chartTop = hasTitle ? 84 : 28;
+    const plotBottom = chartTop + plotH;
+    const catLabelY = plotBottom + 18;
+    const badgeTop = catLabelY + 16;
+    const H = badgeTop + 34;
 
     const maxAbs = Math.max(Math.abs(beforeValue), Math.abs(afterValue), 1);
     const hasNegative = beforeValue < 0 || afterValue < 0;
@@ -72,7 +75,7 @@ export default function BeforeAfterChart({
             {hasTitle && (
                 <text
                     x={W / 2}
-                    y={30}
+                    y={38}
                     textAnchor="middle"
                     fontSize="16"
                     fontWeight="700"
@@ -129,7 +132,7 @@ export default function BeforeAfterChart({
                 <g>
                     <rect
                         x={W / 2 - badgeW / 2}
-                        y={266}
+                        y={badgeTop}
                         width={badgeW}
                         height={24}
                         rx={12}
@@ -138,7 +141,7 @@ export default function BeforeAfterChart({
                     />
                     <text
                         x={W / 2}
-                        y={282}
+                        y={badgeTop + 16}
                         textAnchor="middle"
                         fontSize="13"
                         fontWeight="700"
