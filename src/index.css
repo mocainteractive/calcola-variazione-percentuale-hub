@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --moca-red: #E52217;
+    --moca-red-light: #FFE7E6;
+    --moca-black: #191919;
+    --moca-gray: #8A8A8A;
+    --moca-bg: #FAFAFA;
+    --font-figtree: 'Figtree', sans-serif;
+  }
+
+  body {
+    @apply font-sans text-moca-black bg-moca-bg;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-2.5 bg-moca-red text-white font-medium rounded-md shadow-sm
+           transition-all hover:bg-[#cc1f15] hover:shadow-md hover:-translate-y-0.5
+           active:translate-y-0
+           disabled:opacity-60 disabled:cursor-not-allowed disabled:shadow-none disabled:hover:translate-y-0
+           flex items-center justify-center gap-2;
+  }
+
+  .btn-secondary {
+    @apply px-5 py-2.5 bg-white text-moca-black border border-gray-200 font-medium rounded-md
+           transition-all hover:bg-[#F3F4F6]
+           flex items-center justify-center gap-2;
+  }
+
+  .card {
+    @apply bg-white rounded-lg border border-moca-red-light shadow-sm p-6 mb-6;
+  }
+
+  .input-field {
+    @apply w-full px-3 py-2.5 rounded-md border border-gray-200
+           focus:outline-none focus:border-moca-red focus:ring-4 focus:ring-moca-red/5
+           transition-all bg-white text-moca-black;
+  }
+
+  .section-title {
+    @apply text-xl font-semibold text-moca-black mb-5 pb-3 border-b border-gray-100
+           flex items-center gap-2;
+  }
+
+  .stat-card {
+    @apply bg-white border border-gray-100 shadow-sm p-5 rounded-lg text-center
+           transition-all hover:-translate-y-0.5 hover:shadow-md;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
