@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Percent, Plus, Minus } from 'lucide-react';
 import { parseNumber, formatNumber, formatPercent, applyPercentage } from '../lib/calc';
-import BeforeAfterChart from './BeforeAfterChart';
+import ChartEditor from './ChartEditor';
 
 type Direction = 'increase' | 'decrease';
 
@@ -119,9 +119,11 @@ export default function ApplyPercentageCalculator() {
                             <div className="text-xs text-moca-gray mt-1">Differenza assoluta</div>
                         </div>
                     </div>
-                    <BeforeAfterChart
-                        beforeLabel="Partenza"
-                        afterLabel="Risultato"
+                    <ChartEditor
+                        fileName="risultato-percentuale"
+                        defaultBeforeLabel="Partenza"
+                        defaultAfterLabel="Risultato"
+                        defaultAfterColor={direction === 'decrease' ? '#E52217' : '#16A34A'}
                         beforeValue={base!}
                         afterValue={result}
                         percent={signedPercent}

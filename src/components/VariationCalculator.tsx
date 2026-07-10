@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ArrowRightLeft, TrendingUp, TrendingDown, Minus } from 'lucide-react';
 import { parseNumber, formatNumber, formatPercent, percentageChange } from '../lib/calc';
-import BeforeAfterChart from './BeforeAfterChart';
+import ChartEditor from './ChartEditor';
 
 export default function VariationCalculator() {
     const [initialRaw, setInitialRaw] = useState('');
@@ -91,9 +91,11 @@ export default function VariationCalculator() {
                                     <div className="text-xs text-moca-gray mt-1">Differenza assoluta</div>
                                 </div>
                             </div>
-                            <BeforeAfterChart
-                                beforeLabel="Iniziale"
-                                afterLabel="Finale"
+                            <ChartEditor
+                                fileName="variazione-percentuale"
+                                defaultBeforeLabel="Iniziale"
+                                defaultAfterLabel="Finale"
+                                defaultAfterColor={direction === 'down' ? '#E52217' : '#16A34A'}
                                 beforeValue={initial!}
                                 afterValue={final!}
                                 percent={percent}
