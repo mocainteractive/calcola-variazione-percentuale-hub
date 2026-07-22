@@ -2,6 +2,7 @@ import { MocaProvider, useMoca } from './lib/moca-context';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import { Dashboard } from './components/Dashboard';
+import { FeedbackWidget } from './components/FeedbackWidget';
 import { APP_NAME } from './lib/constants';
 
 function AppContent() {
@@ -13,6 +14,7 @@ function AppContent() {
                 <Dashboard />
             </main>
             <Footer appName={APP_NAME} />
+            <FeedbackWidget />
         </div>
     );
 }
